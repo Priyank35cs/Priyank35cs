@@ -1,0 +1,87 @@
+{% extends 'ecom/basic.html'%}
+
+{% block title %} Title of About {% endblock %}
+{% block body %}
+
+
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Hello, world!</h1>
+      <p>Flipkart Pvt Ltd. is an e-commerce company based in Bengaluru, India. Founded by Sachin Bansal and Binny Bansal in 2007, the company initially focused on book sales, before expanding into other product categories such as consumer electronics, fashion, and lifestyle products.
+          The service competes primarily with Amazon's Indian subsidiary, and the domestic rival Snapdeal.[5][6] as of March 2017, Flipkart held a 39.5% market share of India's e-commerce industry.[7] Flipkart is significantly dominant in the sale of apparel (a position that was bolstered by its acquisitions of Myntra and Jabong.com), and was described as being "neck and neck" with Amazon in the sale of electronics and mobile phones.[8] Flipkart also owns PhonePe, a mobile payments service based on the Unified Payments Interface (UPI).
+          In August 2018, U.S.-based retail chain Walmart acquired a 77% controlling stake in Flipkart for US$16 billion, valuing it at $22 billion.</p>
+      <p><a class="btn btn-primary btn-lg" href="https://en.wikipedia.org/wiki/Flipkart" role="button">Learn more &raquo;</a></p>
+
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Amazon's</h2>
+        <p>Flipkart Pvt Ltd. is an e-commerce company based in Bengaluru, India. Founded by Sachin Bansal and Binny Bansal in 2007, the company initially focused on book sales, before expanding into other product categories such as consumer electronics, fashion, and lifestyle products.
+            The service competes primarily with Amazon's Indian subsidiary.</p>
+        <p><a class="btn btn-secondary" href="https://en.wikipedia.org/wiki/Amazon_(company)" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>AliBaba</h2>
+        <p>Flipkart Pvt Ltd. is an e-commerce company based in Bengaluru, India. Founded by Sachin Bansal and Binny Bansal in 2007, the company initially focused on book sales, before expanding into other product categories such as consumer electronics, fashion, and lifestyle products.
+            The service competes primarily with Amazon's Indian subsidiary.</p>
+        <p><a class="btn btn-secondary" href="https://hi.wikipedia.org/wiki/%E0%A4%85%E0%A4%B2%E0%A5%80%E0%A4%AC%E0%A4%BE%E0%A4%AC%E0%A4%BE_%E0%A4%B8%E0%A4%AE%E0%A5%82%E0%A4%B9" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>SnapDeal</h2>
+        <p>Flipkart Pvt Ltd. is an e-commerce company based in Bengaluru, India. Founded by Sachin Bansal and Binny Bansal in 2007, the company initially focused on book sales, before expanding into other product categories such as consumer electronics, fashion, and lifestyle products.
+            The service competes primarily with Amazon's Indian subsidiary.</p>
+        <p><a class="btn btn-secondary" href="https://en.wikipedia.org/wiki/Snapdeal" role="button">View details &raquo;</a></p>
+      </div>
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
+
+</main>
+
+<footer class="container">
+  <p>&copy; Company 2017-2019</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+
+{% endblock %}
+{% block js %}
+
+<script>
+console.log('working');
+if(localStorage.getItem('cart')== null){
+var cart={};
+}
+else
+{
+cart = JSON.parse(localStorage.getItem('cart'));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+}
+
+$('.cart').click(function(){
+console.log('clicked');
+var idstr=this.id.toString();
+console.log(idstr);
+if(cart[idstr]!= undefined){
+cart[idstr]=cart[idstr]+1;
+}else{
+cart[idstr]=1;
+}
+console.log(cart);
+localStorage.setItem('cart',JSON.stringify(cart));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+});
+$('#popcart').popover()
+document.getElementById("popcart").setAttribute('data-content', '<h5>Cart</h5>');
+</script>
+{% endblock %}
